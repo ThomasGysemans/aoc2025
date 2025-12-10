@@ -22,7 +22,6 @@ pub fn main() {
         if dial == 0 {
             result += 1;
         }
-        println!("dial = {dial}");
     }
 
     println!("The result is {result}");

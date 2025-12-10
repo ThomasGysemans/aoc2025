@@ -1,9 +1,6 @@
-mod challenge_01_part_1;
-mod challenge_01_part_2;
+use std::fs::read_to_string;
 
-use std::fs::{read_to_string};
-
-fn main() {
+pub fn main() {
     let file = read_to_string("input.txt").unwrap();
     let mut result = 0;
     let mut dial_index = 50usize;
