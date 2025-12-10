@@ -1,13 +1,6 @@
-#![allow(dead_code)]
+use std::fs::read_to_string;
 
-mod challenge_01_part_1;
-mod challenge_01_part_2;
-mod challenge_02_part_1;
-mod challenge_02_part_2;
-
-use std::fs::{read_to_string};
-
-fn main() {
+pub fn main() {
     let file = read_to_string("input.txt").unwrap();
     let ranges = file.split(",").collect::<Vec<&str>>();
     let mut invalid_ids = Vec::<u64>::new();
@@ -18,7 +11,7 @@ fn main() {
         let second_integer = parts[1].trim().parse::<u64>().unwrap();
         for i in first_integer..=second_integer {
             if i <= 10 { continue; }
-            if is_invalid_id(i) {
+            if crate::is_invalid_id(i) {
                 invalid_ids.push(i);
             }
         }
@@ -30,9 +23,9 @@ fn main() {
 
 fn is_invalid_id(number: u64) -> bool {
     let string = number.to_string();
-    let divisibles = get_useful_divisibles(string.len() as u64);
+    let divisibles = crate::get_useful_divisibles(string.len() as u64);
     for divisible in divisibles {
-        let parts = split_string(&string, divisible as usize);
+        let parts = crate::split_string(&string, divisible as usize);
         let mut is_invalid = true;
         for j in 1..parts.len() {
             if parts[0] != parts[j] {
