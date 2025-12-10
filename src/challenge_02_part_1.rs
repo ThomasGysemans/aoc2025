@@ -1,12 +1,6 @@
-#![allow(dead_code)]
+use std::fs::read_to_string;
 
-mod challenge_01_part_1;
-mod challenge_01_part_2;
-mod challenge_02_part_1;
-
-use std::fs::{read_to_string};
-
-fn main() {
+pub fn main() {
     let file = read_to_string("input.txt").unwrap();
     let ranges = file.split(",").collect::<Vec<&str>>();
     let mut invalid_ids = Vec::<u64>::new();
