@@ -11,7 +11,7 @@ pub fn main() {
         let second_integer = parts[1].trim().parse::<u64>().unwrap();
         for i in first_integer..=second_integer {
             if i <= 10 { continue; }
-            if crate::is_invalid_id(i) {
+            if is_invalid_id(i) {
                 invalid_ids.push(i);
             }
         }
@@ -23,9 +23,9 @@ pub fn main() {
 
 fn is_invalid_id(number: u64) -> bool {
     let string = number.to_string();
-    let divisibles = crate::get_useful_divisibles(string.len() as u64);
+    let divisibles = get_useful_divisibles(string.len() as u64);
     for divisible in divisibles {
-        let parts = crate::split_string(&string, divisible as usize);
+        let parts = split_string(&string, divisible as usize);
         let mut is_invalid = true;
         for j in 1..parts.len() {
             if parts[0] != parts[j] {
