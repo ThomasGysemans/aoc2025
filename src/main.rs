@@ -8,13 +8,10 @@ mod challenge_03_part_1;
 mod challenge_03_part_2;
 mod challenge_04_part_1;
 mod challenge_04_part_2;
+mod challenge_05_part_1;
 
 use std::fs::{read_to_string};
 
 fn main() {
-    let file = read_to_string("input.txt").unwrap();
-
-    for line in file.lines() {
-
-    }
+    challenge_05_part_1::main();
 }
