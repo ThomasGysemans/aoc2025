@@ -21,7 +21,7 @@ pub fn main() {
     }
 
     loop {
-        let all_coordinates = crate::detect_removable_cells(grid_size, &mut map);
+        let all_coordinates = detect_removable_cells(grid_size, &mut map);
         if all_coordinates.len() == 0 {
             break;
         }
