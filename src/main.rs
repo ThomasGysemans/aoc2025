@@ -30,8 +30,25 @@ fn main() {
         }
     }
 
-    let max = grid_size - 1;
+    loop {
+        let all_coordinates = detect_removable_cells(grid_size, &mut map);
+        if all_coordinates.len() == 0 {
+            break;
+        }
+        result += all_coordinates.len() as u32;
+        for coordinates in all_coordinates {
+            let x = coordinates[0];
+            let y = coordinates[1];
+            map[y * grid_size + x] = false;
+        }
+    }
 
+    println!("{}", result);
+}
+
+fn detect_removable_cells(grid_size: usize, map: &mut Vec<bool>) -> Vec<[usize; 2]> {
+    let max = grid_size - 1;
+    let mut removable_cells: Vec<[usize; 2]> = Vec::new();
     for y in 0..grid_size {
         for x in 0..grid_size {
             let cell = map[y * grid_size + x];
@@ -46,22 +63,10 @@ fn main() {
                 let se = if y < max && x < max { map[(y + 1) * grid_size + (x + 1)] } else { false } as u8;
                 let total = nw + n + ne + w + e + sw + s + se;
                 if total < 4 {
-                    result += 1;
+                    removable_cells.push([x, y]);
                 }
             }
         }
     }
-
-    println!("{}", result);
-}
-
-fn visualise_grid(size: usize, grid: Vec<bool>) {
-    for i in 0..size {
-        for j in 0..size {
-            let cell = grid[i * size + j];
-            let char = if cell { '@' } else { '.' };
-            print!("{}", char);
-        }
-        println!();
-    }
+    removable_cells
 }
