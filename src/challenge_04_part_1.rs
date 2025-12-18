@@ -1,16 +1,6 @@
-#![allow(dead_code)]
+use std::fs::read_to_string;
 
-mod challenge_01_part_1;
-mod challenge_01_part_2;
-mod challenge_02_part_1;
-mod challenge_02_part_2;
-mod challenge_03_part_1;
-mod challenge_03_part_2;
-mod challenge_04_part_1;
-
-use std::fs::{read_to_string};
-
-fn main() {
+pub fn main() {
     let file = read_to_string("input.txt").unwrap();
     let first_line = file.lines().next().unwrap();
     let grid_size = first_line.len();
@@ -55,7 +45,7 @@ fn main() {
     println!("{}", result);
 }
 
-fn visualise_grid(size: usize, grid: Vec<bool>) {
+pub fn visualise_grid(size: usize, grid: Vec<bool>) {
     for i in 0..size {
         for j in 0..size {
             let cell = grid[i * size + j];
