@@ -1,15 +1,6 @@
-#![allow(dead_code)]
+use std::fs::read_to_string;
 
-mod challenge_01_part_1;
-mod challenge_01_part_2;
-mod challenge_02_part_1;
-mod challenge_02_part_2;
-mod challenge_03_part_1;
-mod challenge_03_part_2;
-
-use std::fs::{read_to_string};
-
-fn main() {
+pub fn main() {
     let file = read_to_string("input.txt").unwrap();
     let mut joltages = Vec::<u64>::new();
 
